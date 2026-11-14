@@ -1,0 +1,110 @@
+<!DOCTYPE html><html lang="en" data-theme="dark"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><script src="/theme.js"></script><title>Threat group detection packs and SigmaHQ gap analysis | Kushagra Patel</title><meta name="description" content="Threat intelligence is only useful to a SOC when it becomes something to detect. I built the part of Sigma Generator that takes a threat group, drafts a detection for each of its techniques, shows what community rules already cover, and packages the result as a STIX 2.1 bundle."><meta name="author" content="Kushagra Patel"><link rel="canonical" href="https://kushagra-patel1011.github.io/projects/threat-packs-gap-analysis-stix/"><meta property="og:type" content="article"><meta property="og:site_name" content="Kushagra Patel"><meta property="og:title" content="Threat group detection packs and SigmaHQ gap analysis"><meta property="og:description" content="Threat intelligence is only useful to a SOC when it becomes something to detect. I built the part of Sigma Generator that takes a threat group, drafts a detection for each of its techniques, shows what community rules already cover, and packages the result as a STIX 2.1 bundle."><meta property="og:url" content="https://kushagra-patel1011.github.io/projects/threat-packs-gap-analysis-stix/"><meta property="og:image" content="https://kushagra-patel1011.github.io/og.png"><meta property="article:published_time" content="2026-09-18T00:00:00.000Z"><meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#17181a"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" title="Kushagra Patel | Blog" href="/rss.xml"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Threat group detection packs and SigmaHQ gap analysis","description":"Threat intelligence is only useful to a SOC when it becomes something to detect. I built the part of Sigma Generator that takes a threat group, drafts a detection for each of its techniques, shows what community rules already cover, and packages the result as a STIX 2.1 bundle.","datePublished":"2026-09-18T00:00:00.000Z","author":{"@type":"Person","name":"Kushagra Patel","url":"https://kushagra-patel1011.github.io"}}</script><link rel="stylesheet" href="/_astro/Base.6iyho4-z.css"><style>.article-head[data-astro-cid-ovxcmftc] h1[data-astro-cid-ovxcmftc]{max-width:22ch}.results[data-astro-cid-ovxcmftc]{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(12rem,1fr));gap:0;margin-top:2.5rem;border-block:1px solid var(--line)}.results[data-astro-cid-ovxcmftc] li[data-astro-cid-ovxcmftc]{padding:1.4rem 1.5rem 1.4rem 0}.results__value[data-astro-cid-ovxcmftc]{display:block;font-family:var(--font-serif);font-size:clamp(2rem,3.4vw,2.75rem);line-height:1.1}.results__label[data-astro-cid-ovxcmftc]{display:block;margin-top:.4rem;font-size:.92rem;line-height:1.45;color:var(--text-muted);max-width:20rem}
+</style></head> <body>  <a class="skip-link" href="#main">
+Skip to content
+</a> <header class="site-header" data-astro-cid-3ef6ksr2> <div class="wrap site-header__inner" data-astro-cid-3ef6ksr2> <a class="brand" href="/" aria-label="Kushagra Patel, home" data-astro-cid-3ef6ksr2> <span data-astro-cid-3ef6ksr2>Kushagra Patel</span> </a> <nav class="site-nav" aria-label="Primary" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a href="/projects/" aria-current="page" data-astro-cid-3ef6ksr2> Case studies </a> </li><li data-astro-cid-3ef6ksr2> <a href="/blog/" data-astro-cid-3ef6ksr2> Blog </a> </li><li data-astro-cid-3ef6ksr2> <a href="/about/" data-astro-cid-3ef6ksr2> About </a> </li><li data-astro-cid-3ef6ksr2> <a href="/resume/" data-astro-cid-3ef6ksr2> Resume </a> </li><li data-astro-cid-3ef6ksr2> <a href="/contact/" data-astro-cid-3ef6ksr2> Contact </a> </li> </ul> </nav> <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch colour theme" data-astro-cid-3ef6ksr2> <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" data-astro-cid-3ef6ksr2> <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8" data-astro-cid-3ef6ksr2></circle> <path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" data-astro-cid-3ef6ksr2></path> </svg> <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" data-astro-cid-3ef6ksr2> <path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" data-astro-cid-3ef6ksr2></path> </svg> </button> </div> </header> <main id="main">  <article data-astro-cid-ovxcmftc> <header class="wrap article-head" data-astro-cid-ovxcmftc> <a class="back-link" href="/projects/" data-astro-cid-ovxcmftc>All case studies</a> <p class="eyebrow" style="margin-top:1.75rem" data-astro-cid-ovxcmftc> Threat Intelligence <span data-astro-cid-ovxcmftc>  · Part of  <a href="/projects/sigma-generator-attack-to-sigma/" data-astro-cid-ovxcmftc>Sigma Generator: Sigma rules drafted from MITRE ATT&amp;CK</a> </span> </p> <h1 data-astro-cid-ovxcmftc>Threat group detection packs and SigmaHQ gap analysis</h1> <p class="article-head__summary" data-astro-cid-ovxcmftc>Threat intelligence is only useful to a SOC when it becomes something to detect. I built the part of Sigma Generator that takes a threat group, drafts a detection for each of its techniques, shows what community rules already cover, and packages the result as a STIX 2.1 bundle.</p> <div class="btn-row" style="margin-top:1.75rem" data-astro-cid-ovxcmftc> <a class="btn" href="https://kushagra-patel1011.github.io/sigma-generator/" rel="noopener" data-astro-cid-ovxcmftc> Try it in the browser </a><a class="btn" href="https://github.com/kushagra-patel1011/sigma-generator" rel="noopener" data-astro-cid-ovxcmftc> Source on GitHub </a> </div> <ul class="results" aria-label="Key results" data-astro-cid-ovxcmftc> <li data-astro-cid-ovxcmftc> <span class="results__value" data-astro-cid-ovxcmftc>176</span> <span class="results__label" data-astro-cid-ovxcmftc>ATT&amp;CK threat groups with a one-command detection pack</span> </li><li data-astro-cid-ovxcmftc> <span class="results__value" data-astro-cid-ovxcmftc>4,036</span> <span class="results__label" data-astro-cid-ovxcmftc>rules across all group packs, plus 1,892 correlation rules</span> </li><li data-astro-cid-ovxcmftc> <span class="results__value" data-astro-cid-ovxcmftc>1 of 7</span> <span class="results__label" data-astro-cid-ovxcmftc>ATT&amp;CK-recommended log sources SigmaHQ watches for MFA fatigue</span> </li> </ul> </header> <div class="wrap article-body" data-astro-cid-ovxcmftc> <div class="article-layout" data-astro-cid-ovxcmftc> <div data-astro-cid-ovxcmftc>  <div class="prose" data-astro-cid-ovxcmftc> <h2 id="problem">Problem</h2>
+<p>A threat report says a group is targeting your sector. ATT&#x26;CK lists the sixty-odd techniques attributed to that group. The question a SOC lead actually asks is narrower: <strong>which of those can we already detect, and what should we build first?</strong></p>
+<p>Answering it by hand means opening each technique, checking the community rule set for coverage, and writing drafts for the gaps. I had done a smaller version of this during my threat research internship, mapping indicators to ATT&#x26;CK techniques and Sigma rules, and I wanted a tool that did the whole loop.</p>
+<h2 id="approach">Approach</h2>
+<ol>
+<li><strong>Resolve the actor.</strong> Accept a group, a piece of software or a campaign, by ATT&#x26;CK ID, name or alias.</li>
+<li><strong>Mine the actor’s own procedures first.</strong> ATT&#x26;CK’s procedure examples are its most concrete text.</li>
+<li><strong>Check community coverage</strong> for every technique, per log source.</li>
+<li><strong>Draft rules</strong>, optionally only for the gaps.</li>
+<li><strong>Package everything as STIX 2.1</strong> so a threat intelligence platform can ingest it alongside its ATT&#x26;CK feed.</li>
+</ol>
+<h2 id="technical-details">Technical details</h2>
+<h3 id="one-command-per-actor">One command per actor</h3>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">python</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> -m</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> src.main</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> generate</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> --group</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> APT29</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> --chains</span></span></code></pre>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>Detection pack for APT29 (G0016): 66 technique(s) attributed by ATT&#x26;CK</span></span>
+<span class="line"><span>  58 Sigma rule(s), 26 correlation rule(s) for 58 technique(s)</span></span>
+<span class="line"><span>  Quality: 14 strong, 39 moderate, 31 weak</span></span>
+<span class="line"><span>  SigmaHQ r2026-07-01: no existing rule for 13 of these techniques</span></span>
+<span class="line"><span>  2 technique(s) skipped: ATT&#x26;CK gives no concrete values</span></span>
+<span class="line"><span>  Folder: output/packs/g0016_apt29</span></span></code></pre>
+<p>Aliases resolve as well, so <code>"Cozy Bear"</code> finds APT29. For each technique the pack prefers values from that group’s documented procedures, for example the sentence describing the group’s use of encoded PowerShell, over the technique’s generic description. Rules carry the Sigma group or software tag, such as <code>attack.g0016</code>.</p>
+<p>Software packs are restricted to the platforms the software runs on. ATT&#x26;CK lists Mimikatz as Windows-only, so its pack never receives a Linux rule, even where a Linux analytic would score higher.</p>
+<h3 id="gap-analysis-against-sigmahq">Gap analysis against SigmaHQ</h3>
+<p>The tool downloads SigmaHQ’s release and indexes rule metadata locally: ID, logsource, ATT&#x26;CK tags and event IDs. It then compares what ATT&#x26;CK recommends monitoring with what a community rule already watches.</p>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="--shiki-light:#6F42C1;--shiki-dark:#F69D50">python</span><span style="--shiki-light:#005CC5;--shiki-dark:#6CB6FF"> -m</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> src.main</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> gaps</span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF"> T1621</span></span></code></pre>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>T1621 Multi-Factor Authentication Request Generation</span></span>
+<span class="line"><span>  SigmaHQ rules tagged T1621: 2</span></span>
+<span class="line"><span>  ATT&#x26;CK-recommended telemetry covered: 1/7  -> partial</span></span>
+<span class="line"><span>    azure:signinlogs        -> azure/signinlogs    covered by 2 rule(s)</span></span>
+<span class="line"><span>    NSM:Connections         -> zeek/conn           GAP</span></span>
+<span class="line"><span>    AWS:CloudTrail          -> aws/cloudtrail      GAP</span></span>
+<span class="line"><span>    WinEventLog:Security    -> windows/security    GAP</span></span>
+<span class="line"><span>    auditd:AUTH             -> linux/auditd        GAP</span></span>
+<span class="line"><span>    saas:okta               -> okta/okta           GAP</span></span>
+<span class="line"><span>    macos:unifiedlog        -> macos/unifiedlog    GAP</span></span></code></pre>
+<p>MFA fatigue is a good illustration. The community rules for it only watch Azure sign-in logs, while ATT&#x26;CK recommends seven kinds of telemetry. An organisation using Okta has no community coverage for this technique at all.</p>
+<p>How coverage is decided, so the result is not over-claimed:</p>
+<ul>
+<li>A rule covers a log source when it is tagged with the technique <strong>and</strong> watches the same Sigma logsource.</li>
+<li>For Windows service logs, the event IDs must overlap.</li>
+<li>“Covered” means a rule exists for that technique on that telemetry. It does not mean the rule catches every variant, and the tool says so.</li>
+</ul>
+<p><code>--gaps-only</code> then generates rules only for uncovered telemetry, so the output complements the community set instead of duplicating it.</p>
+<h3 id="stix-21-design-decisions">STIX 2.1 design decisions</h3>
+<p>Each pack includes a bundle. Most of the thought went into making it behave well inside a threat intelligence platform.</p>
+<table>
+<thead>
+<tr>
+<th>Object</th>
+<th>Decision</th>
+<th>Why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>indicator</code></td>
+<td><code>pattern_type: sigma</code>, with the rule as the pattern. Its UUID equals the Sigma rule’s UUID</td>
+<td>One identity for the same detection in both worlds</td>
+</tr>
+<tr>
+<td><code>attack-pattern</code></td>
+<td>Keeps <strong>MITRE’s own STIX ID</strong></td>
+<td>The platform deduplicates it against its existing ATT&#x26;CK feed instead of creating a second copy</td>
+</tr>
+<tr>
+<td><code>relationship</code></td>
+<td><code>indicator --indicates--> attack-pattern</code></td>
+<td>This is the relationship the STIX 2.1 specification defines for that pair. I chose it over MITRE’s custom <code>detects</code> for compatibility</td>
+</tr>
+<tr>
+<td><code>intrusion-set</code>, <code>tool</code>, <code>malware</code>, <code>campaign</code></td>
+<td>The actor, with MITRE’s <code>uses</code> relationships and procedure descriptions</td>
+<td>The pack is browsable from the actor down</td>
+</tr>
+<tr>
+<td><code>report</code></td>
+<td>One object referencing everything in the pack</td>
+<td>A single item to open in the platform</td>
+</tr>
+<tr>
+<td>labels</td>
+<td>Each indicator carries its quality tier, such as <code>quality.strong</code></td>
+<td>An analyst can filter to deployable detections inside the platform</td>
+</tr>
+</tbody>
+</table>
+<p>The indicator’s <code>confidence</code> is taken from the evidence tier that produced the rule, so a rule built from an exact event ID reference is marked more confident than one inferred from a platform name.</p>
+<h3 id="what-a-pack-contains">What a pack contains</h3>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="text"><code><span class="line"><span>output/packs/s0002_mimikatz/</span></span>
+<span class="line"><span>├── README.md                     quality split, then technique, rules, correlations, SigmaHQ status</span></span>
+<span class="line"><span>├── pack.json                     the same, machine-readable</span></span>
+<span class="line"><span>├── s0002_mimikatz_bundle.json    STIX 2.1 bundle</span></span>
+<span class="line"><span>└── sigma/                        one rule per technique, mr_*.yml are correlation rules</span></span></code></pre>
+<h2 id="results">Results</h2>
+<ul>
+<li>Detection packs for all <strong>176</strong> ATT&#x26;CK threat groups: <strong>4,036 rules and 1,892 correlation rules</strong> in total.</li>
+<li>Every one of the 5,928 group-pack files passes validation and pySigma.</li>
+<li>Across software packs, 102 of 10,311 rules fall outside the software’s platforms because no analytic exists for that platform. Each of those is flagged in its banner.</li>
+<li>The gap check turns “do we cover this group” into a per-log-source table that can be sorted into a backlog.</li>
+</ul>
+<h2 id="lessons">Lessons</h2>
+<ul>
+<li><strong>Intelligence needs a destination.</strong> A group profile is reading material. A list of thirteen techniques with no existing rule is work someone can pick up.</li>
+<li><strong>Reuse identifiers.</strong> Keeping MITRE’s STIX IDs and matching the Sigma UUID is a small decision that avoids duplicate objects in every platform that ingests the bundle.</li>
+<li><strong>Define “covered” narrowly and say so.</strong> It would have been easy to report better coverage numbers with a looser definition. A gap report is only useful if people trust it.</li>
+<li><strong>Attribution data is a starting point.</strong> ATT&#x26;CK records what has been publicly reported about a group. A pack is a reviewable backlog for an analyst, not a statement about what the group will do next.</li>
+</ul> </div> <p class="article-meta" style="margin-top:3rem" data-astro-cid-ovxcmftc> <span data-astro-cid-ovxcmftc>Published 18 September 2026</span> </p> </div> <aside class="article-side" data-astro-cid-ovxcmftc> <nav class="side-block side-toc" aria-label="On this page" data-astro-cid-ovxcmftc> <h2 class="side-title" data-astro-cid-ovxcmftc>On this page</h2> <ul class="toc" data-astro-cid-ovxcmftc> <li data-astro-cid-ovxcmftc> <a href="#problem" data-astro-cid-ovxcmftc>Problem</a> </li><li data-astro-cid-ovxcmftc> <a href="#approach" data-astro-cid-ovxcmftc>Approach</a> </li><li data-astro-cid-ovxcmftc> <a href="#technical-details" data-astro-cid-ovxcmftc>Technical details</a> </li><li data-astro-cid-ovxcmftc> <a href="#results" data-astro-cid-ovxcmftc>Results</a> </li><li data-astro-cid-ovxcmftc> <a href="#lessons" data-astro-cid-ovxcmftc>Lessons</a> </li> </ul> </nav>  <div class="side-block" data-astro-cid-ovxcmftc> <h2 class="side-title" data-astro-cid-ovxcmftc>Details</h2> <dl class="side-facts" data-astro-cid-ovxcmftc> <div data-astro-cid-ovxcmftc> <dt data-astro-cid-ovxcmftc>Role</dt> <dd data-astro-cid-ovxcmftc>Sole author</dd> </div><div data-astro-cid-ovxcmftc> <dt data-astro-cid-ovxcmftc>Timeline</dt> <dd data-astro-cid-ovxcmftc>September 2026, part of Sigma Generator</dd> </div><div data-astro-cid-ovxcmftc> <dt data-astro-cid-ovxcmftc>Environment</dt> <dd data-astro-cid-ovxcmftc>MITRE ATT&amp;CK groups, software and campaigns; SigmaHQ release r2026-07-01; STIX 2.1</dd> </div> <div data-astro-cid-ovxcmftc> <dt data-astro-cid-ovxcmftc>Tools</dt> <dd data-astro-cid-ovxcmftc> <ul class="chips" data-astro-cid-ovxcmftc> <li class="chip" data-astro-cid-ovxcmftc>Python</li><li class="chip" data-astro-cid-ovxcmftc>STIX 2.1</li><li class="chip" data-astro-cid-ovxcmftc>MITRE ATT&amp;CK</li><li class="chip" data-astro-cid-ovxcmftc>Sigma</li><li class="chip" data-astro-cid-ovxcmftc>SigmaHQ</li><li class="chip" data-astro-cid-ovxcmftc>OpenCTI-compatible bundles</li> </ul> </dd> </div> <div data-astro-cid-ovxcmftc> <dt data-astro-cid-ovxcmftc>ATT&amp;CK</dt> <dd data-astro-cid-ovxcmftc> <ul class="chips" data-astro-cid-ovxcmftc> <li data-astro-cid-ovxcmftc> <a class="chip" href="https://attack.mitre.org/techniques/T1621/" rel="noopener" data-astro-cid-ovxcmftc> T1621 Multi-Factor Authentication Request Generation </a> </li> </ul> </dd> </div>  </dl> </div> </aside> </div> </div> <nav class="wrap pager" aria-label="More case studies" data-astro-cid-ovxcmftc> <a href="/projects/sigma-correlation-rules/" data-astro-cid-ovxcmftc> <span class="eyebrow" data-astro-cid-ovxcmftc>Previous</span> <span class="pager__title" data-astro-cid-ovxcmftc>Correlation rules for attack chains and thresholds</span> </a> <a class="pager__next" href="/projects/hardening-local-web-ui-browser-build/" data-astro-cid-ovxcmftc> <span class="eyebrow" data-astro-cid-ovxcmftc>Next</span> <span class="pager__title" data-astro-cid-ovxcmftc>Hardening a local web UI against CSRF and DNS rebinding</span> </a> </nav> </article> <section class="cta" aria-labelledby="cta-title"> <div class="wrap cta__inner split"> <div class="split__lead"> <h2 id="cta-title"> Hiring for a security team? I’d like to hear about it. </h2> </div> <div> <p> I&#39;m looking for a SOC analyst role first. I&#39;m also open to threat intelligence, detection engineering, incident response and security testing. Pune, anywhere in India, or remote. Rotational shifts are fine. </p> <div class="btn-row"> <a class="btn btn--primary" href="/contact/">Contact me</a> <a class="btn" href="/resume/">Resume</a> </div> </div> </div> </section>  </main> <footer class="site-footer" data-astro-cid-sz7xmlte> <div class="wrap site-footer__inner" data-astro-cid-sz7xmlte> <p class="site-footer__copy" data-astro-cid-sz7xmlte>&copy; 2026 Kushagra Patel</p> <ul class="site-footer__links" data-astro-cid-sz7xmlte> <li data-astro-cid-sz7xmlte><a href="mailto:kushagrapatel11oct@gmail.com" data-astro-cid-sz7xmlte>Email</a></li> <li data-astro-cid-sz7xmlte> <a href="https://github.com/kushagra-patel1011" rel="me noopener" data-astro-cid-sz7xmlte> GitHub </a> </li><li data-astro-cid-sz7xmlte> <a href="https://www.linkedin.com/in/kushagra-patel" rel="me noopener" data-astro-cid-sz7xmlte> LinkedIn </a> </li> </ul> </div> </footer>  </body></html>

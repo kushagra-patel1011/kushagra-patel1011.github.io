@@ -1,0 +1,134 @@
+<!DOCTYPE html><html lang="en" data-theme="dark"> <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><script src="/theme.js"></script><title>IOC validation and STIX 2.1 automation at Seqrite Labs | Kushagra Patel</title><meta name="description" content="As a Threat Research Intern I built a pipeline that checks indicators against VirusTotal, AbuseIPDB, OTX and ThreatFox, automated STIX 2.1 bundle creation for OpenCTI, and modelled an APT28 tracking profile."><meta name="author" content="Kushagra Patel"><link rel="canonical" href="https://kushagra-patel1011.github.io/projects/ioc-validation-pipeline-seqrite/"><meta property="og:type" content="article"><meta property="og:site_name" content="Kushagra Patel"><meta property="og:title" content="IOC validation and STIX 2.1 automation at Seqrite Labs"><meta property="og:description" content="As a Threat Research Intern I built a pipeline that checks indicators against VirusTotal, AbuseIPDB, OTX and ThreatFox, automated STIX 2.1 bundle creation for OpenCTI, and modelled an APT28 tracking profile."><meta property="og:url" content="https://kushagra-patel1011.github.io/projects/ioc-validation-pipeline-seqrite/"><meta property="og:image" content="https://kushagra-patel1011.github.io/og.png"><meta property="article:published_time" content="2026-07-15T00:00:00.000Z"><meta name="twitter:card" content="summary_large_image"><meta name="theme-color" content="#17181a"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><link rel="sitemap" href="/sitemap-index.xml"><link rel="alternate" type="application/rss+xml" title="Kushagra Patel | Blog" href="/rss.xml"><script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"IOC validation and STIX 2.1 automation at Seqrite Labs","description":"As a Threat Research Intern I built a pipeline that checks indicators against VirusTotal, AbuseIPDB, OTX and ThreatFox, automated STIX 2.1 bundle creation for OpenCTI, and modelled an APT28 tracking profile.","datePublished":"2026-07-15T00:00:00.000Z","author":{"@type":"Person","name":"Kushagra Patel","url":"https://kushagra-patel1011.github.io"}}</script><link rel="stylesheet" href="/_astro/Base.6iyho4-z.css"><style>.article-head[data-astro-cid-ovxcmftc] h1[data-astro-cid-ovxcmftc]{max-width:22ch}.results[data-astro-cid-ovxcmftc]{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(12rem,1fr));gap:0;margin-top:2.5rem;border-block:1px solid var(--line)}.results[data-astro-cid-ovxcmftc] li[data-astro-cid-ovxcmftc]{padding:1.4rem 1.5rem 1.4rem 0}.results__value[data-astro-cid-ovxcmftc]{display:block;font-family:var(--font-serif);font-size:clamp(2rem,3.4vw,2.75rem);line-height:1.1}.results__label[data-astro-cid-ovxcmftc]{display:block;margin-top:.4rem;font-size:.92rem;line-height:1.45;color:var(--text-muted);max-width:20rem}
+</style></head> <body>  <a class="skip-link" href="#main">
+Skip to content
+</a> <header class="site-header" data-astro-cid-3ef6ksr2> <div class="wrap site-header__inner" data-astro-cid-3ef6ksr2> <a class="brand" href="/" aria-label="Kushagra Patel, home" data-astro-cid-3ef6ksr2> <span data-astro-cid-3ef6ksr2>Kushagra Patel</span> </a> <nav class="site-nav" aria-label="Primary" data-astro-cid-3ef6ksr2> <ul data-astro-cid-3ef6ksr2> <li data-astro-cid-3ef6ksr2> <a href="/projects/" aria-current="page" data-astro-cid-3ef6ksr2> Case studies </a> </li><li data-astro-cid-3ef6ksr2> <a href="/blog/" data-astro-cid-3ef6ksr2> Blog </a> </li><li data-astro-cid-3ef6ksr2> <a href="/about/" data-astro-cid-3ef6ksr2> About </a> </li><li data-astro-cid-3ef6ksr2> <a href="/resume/" data-astro-cid-3ef6ksr2> Resume </a> </li><li data-astro-cid-3ef6ksr2> <a href="/contact/" data-astro-cid-3ef6ksr2> Contact </a> </li> </ul> </nav> <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch colour theme" data-astro-cid-3ef6ksr2> <svg class="icon-sun" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" data-astro-cid-3ef6ksr2> <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8" data-astro-cid-3ef6ksr2></circle> <path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" data-astro-cid-3ef6ksr2></path> </svg> <svg class="icon-moon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" data-astro-cid-3ef6ksr2> <path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" data-astro-cid-3ef6ksr2></path> </svg> </button> </div> </header> <main id="main">  <article data-astro-cid-ovxcmftc> <header class="wrap article-head" data-astro-cid-ovxcmftc> <a class="back-link" href="/projects/" data-astro-cid-ovxcmftc>All case studies</a> <p class="eyebrow" style="margin-top:1.75rem" data-astro-cid-ovxcmftc> Threat Intelligence  </p> <h1 data-astro-cid-ovxcmftc>IOC validation and STIX 2.1 automation at Seqrite Labs</h1> <p class="article-head__summary" data-astro-cid-ovxcmftc>As a Threat Research Intern I built a pipeline that checks indicators against VirusTotal, AbuseIPDB, OTX and ThreatFox, automated STIX 2.1 bundle creation for OpenCTI, and modelled an APT28 tracking profile.</p>  <ul class="results" aria-label="Key results" data-astro-cid-ovxcmftc> <li data-astro-cid-ovxcmftc> <span class="results__value" data-astro-cid-ovxcmftc>4</span> <span class="results__label" data-astro-cid-ovxcmftc>intelligence sources checked per indicator</span> </li><li data-astro-cid-ovxcmftc> <span class="results__value" data-astro-cid-ovxcmftc>1</span> <span class="results__label" data-astro-cid-ovxcmftc>threat actor, APT28, modelled end to end in OpenCTI</span> </li> </ul> </header> <div class="wrap article-body" data-astro-cid-ovxcmftc> <div class="article-layout" data-astro-cid-ovxcmftc> <div data-astro-cid-ovxcmftc>  <div class="prose" data-astro-cid-ovxcmftc> <h2 id="problem">Problem</h2>
+<p>Indicators of compromise arrive faster than an analyst can assess them. Before an IP address, domain or file hash is used in a detection or passed to a SOC, someone has to answer basic questions: is it still malicious, who else has seen it, and what is it associated with?</p>
+<p>During my internship that assessment was manual. Each indicator meant opening several services, searching for the same value in each one, and comparing the answers by hand. The work is repetitive, it is easy to skip a source when the queue is long, and two people can reach different conclusions about the same indicator.</p>
+<p>This page describes the design of what I built. It does not include indicators, data or tooling details from Seqrite.</p>
+<h2 id="approach">Approach</h2>
+<ol>
+<li><strong>Query several independent sources for every indicator</strong> instead of trusting one.</li>
+<li><strong>Normalise the answers</strong> into one record per indicator.</li>
+<li><strong>Represent the result as STIX 2.1</strong>, so it can be loaded into a threat intelligence platform.</li>
+<li><strong>Model a threat actor end to end</strong> in OpenCTI to test that the structure supports campaign-level analysis.</li>
+<li><strong>Map indicators to ATT&#x26;CK techniques and Sigma rules</strong>, so intelligence connects to detection.</li>
+</ol>
+<h2 id="technical-details">Technical details</h2>
+<h3 id="why-four-sources">Why four sources</h3>
+<p>Each service answers a different question, which is why the pipeline uses all four:</p>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>What it contributes</th>
+<th>What it cannot tell you</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>VirusTotal</td>
+<td>Verdicts from many antivirus engines and scanners for files, URLs, domains and IPs</td>
+<td>Who is behind it, or whether it is still in use</td>
+</tr>
+<tr>
+<td>AbuseIPDB</td>
+<td>Community abuse reports for IP addresses, with a confidence score from 0 to 100</td>
+<td>Anything about domains or files</td>
+</tr>
+<tr>
+<td>AlienVault OTX</td>
+<td>Community “pulses” that tie an indicator to a reported campaign or malware</td>
+<td>How reliable the person who published the pulse is</td>
+</tr>
+<tr>
+<td>ThreatFox</td>
+<td>Indicators shared through abuse.ch, linked to a named malware family</td>
+<td>Indicators nobody has submitted yet</td>
+</tr>
+</tbody>
+</table>
+<p>No single column is enough. A file hash with many VirusTotal detections is strong evidence on its own. An IP address with one old abuse report is not, because the same address may now belong to someone else. Putting the four answers side by side is what turns a lookup into an assessment.</p>
+<h3 id="one-record-per-indicator">One record per indicator</h3>
+<p>The four APIs return different shapes of JSON, different names for the same idea, and scores on different scales. The pipeline’s job is to turn them into one record per indicator that an analyst can read in seconds: the indicator, its type, what each source said, and when each source last saw it.</p>
+<p>Three practical problems shape a pipeline like this:</p>
+<ul>
+<li><strong>Not every source covers every type.</strong> AbuseIPDB only knows IP addresses, so “no result” for a domain means “not applicable”, not “clean”. The record has to keep those two answers apart.</li>
+<li><strong>Free API tiers are rate limited.</strong> VirusTotal’s public API, for example, allows four lookups a minute. Requests have to be queued and spaced, and repeat lookups for the same indicator should be answered from a cache.</li>
+<li><strong>Indicators age.</strong> An address that hosted a command-and-control server last year may be an ordinary website today. The date of the last sighting matters as much as the verdict.</li>
+</ul>
+<h3 id="stix-21-bundles">STIX 2.1 bundles</h3>
+<p>A spreadsheet of indicators cannot say how they relate to each other. STIX 2.1 can: every indicator, malware family and threat group is an object with its own ID, and relationship objects connect them. I automated the creation of these bundles for APT scenario modelling, so the output could be loaded into OpenCTI rather than retyped.</p>
+<p>The example below shows the idea. It uses a reserved documentation domain, not an indicator from the internship. The intrusion set ID is the real, public MITRE ATT&#x26;CK identifier for APT28.</p>
+<pre class="astro-code astro-code-themes github-light github-dark-dimmed" style="--shiki-light:#24292e;--shiki-dark:#adbac7;--shiki-light-bg:#fff;--shiki-dark-bg:#22272e; overflow-x: auto;" tabindex="0" data-language="json"><code><span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">{</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#8DDB8C">  "type"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">: </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"bundle"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">,</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#8DDB8C">  "id"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">: </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"bundle--5d0092c5-5f74-4287-9642-33f4c354e56d"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">,</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#8DDB8C">  "objects"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">: [</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">    {</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#8DDB8C">      "type"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">: </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"indicator"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">,</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#8DDB8C">      "spec_version"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">: </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"2.1"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">,</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#8DDB8C">      "id"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">: </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"indicator--8e2e2d2b-17d4-4cbf-938f-98ee46b3cd3f"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">,</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#8DDB8C">      "created"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">: </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"2026-05-12T09:00:00.000Z"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">,</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#8DDB8C">      "modified"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">: </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"2026-05-12T09:00:00.000Z"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">,</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#8DDB8C">      "name"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">: </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"Credential phishing domain"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">,</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#8DDB8C">      "pattern"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">: </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"[domain-name:value = 'login.example.com']"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">,</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#8DDB8C">      "pattern_type"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">: </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"stix"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">,</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#8DDB8C">      "valid_from"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">: </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"2026-05-12T09:00:00.000Z"</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">    },</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">    {</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#8DDB8C">      "type"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">: </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"relationship"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">,</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#8DDB8C">      "spec_version"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">: </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"2.1"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">,</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#8DDB8C">      "id"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">: </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"relationship--44298a74-ba52-4f0c-87a3-1824e67d7fad"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">,</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#8DDB8C">      "created"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">: </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"2026-05-12T09:00:00.000Z"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">,</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#8DDB8C">      "modified"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">: </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"2026-05-12T09:00:00.000Z"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">,</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#8DDB8C">      "relationship_type"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">: </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"indicates"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">,</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#8DDB8C">      "source_ref"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">: </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"indicator--8e2e2d2b-17d4-4cbf-938f-98ee46b3cd3f"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">,</span></span>
+<span class="line"><span style="--shiki-light:#005CC5;--shiki-dark:#8DDB8C">      "target_ref"</span><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">: </span><span style="--shiki-light:#032F62;--shiki-dark:#96D0FF">"intrusion-set--bef4c620-0787-42a8-a96d-b7eb6e85917c"</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">    }</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">  ]</span></span>
+<span class="line"><span style="--shiki-light:#24292E;--shiki-dark:#ADBAC7">}</span></span></code></pre>
+<p>The relationship object is the valuable part. It is what lets a platform answer “show me everything connected to this group” instead of “search for this string”.</p>
+<h3 id="apt28-tracking-profile-in-opencti">APT28 tracking profile in OpenCTI</h3>
+<p>To check that the structure held up for a real actor, I modelled an APT28 tracking profile in OpenCTI. APT28 (ATT&#x26;CK group G0007, also reported as Fancy Bear and Forest Blizzard) is one of the most thoroughly documented groups in public reporting, which makes it a good test case.</p>
+<p>OpenCTI treats each kind of indicator as its own observable type: IP addresses, domain names, URLs, file hashes, email addresses and so on. The profile linked these indicator types to the one intrusion set, so that an analyst starting from any single indicator could move outward to the campaign it belonged to and document the case in one place.</p>
+<h3 id="linking-intelligence-to-detection">Linking intelligence to detection</h3>
+<p>An indicator on its own says “this value is bad”. It does not say what the attacker was doing. The link to MITRE ATT&#x26;CK comes from context: what the reporting says the indicator was used for.</p>
+<table>
+<thead>
+<tr>
+<th>Indicator and its context</th>
+<th>ATT&#x26;CK technique</th>
+<th>Where a rule would look</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Domain used in a phishing link</td>
+<td>T1566.002 Spearphishing Link</td>
+<td>Email gateway and proxy logs</td>
+</tr>
+<tr>
+<td>IP address used for command and control over HTTPS</td>
+<td>T1071.001 Web Protocols</td>
+<td>Proxy and firewall logs</td>
+</tr>
+<tr>
+<td>Hash of a malicious attachment</td>
+<td>T1566.001 Spearphishing Attachment</td>
+<td>Endpoint file and process events</td>
+</tr>
+</tbody>
+</table>
+<p>I mapped indicators to technique IDs in this way and aligned them with Sigma detection rules, so that a piece of intelligence pointed at the log source and rule that could act on it. I wrote more about the STIX side of that link in <a href="/blog/stix-sigma-attack-indicates/">Linking Sigma rules to ATT&#x26;CK in STIX 2.1</a>.</p>
+<h2 id="results">Results</h2>
+<ul>
+<li>Indicator assessment that had been done by hand across four services was automated, which reduced the time an analyst spent on each indicator.</li>
+<li>Validated intelligence fed SOC detection workflows.</li>
+<li>STIX 2.1 bundles were produced for ingestion into OpenCTI and downstream SIEM alert enrichment.</li>
+<li>An APT28 tracking profile linked indicator types to one intrusion set for campaign-level correlation and case documentation.</li>
+</ul>
+<h2 id="lessons">Lessons</h2>
+<ul>
+<li><strong>Disagreement between sources is information.</strong> When one service flags an indicator and three do not, the useful question is why: a new indicator, a false report, or an address that has changed hands.</li>
+<li><strong>Structure is what makes intelligence reusable.</strong> The same indicators are worth far more as linked STIX objects than as a list, because the relationships carry the meaning.</li>
+<li><strong>Indicators expire, behaviour lasts.</strong> An attacker can change a domain in minutes but changes technique far less often. Mapping indicators to ATT&#x26;CK techniques made that clear to me, and it is the idea behind my later project, <a href="/projects/sigma-generator-attack-to-sigma/">Sigma Generator</a>, which starts from the technique instead of the indicator.</li>
+</ul> </div> <p class="article-meta" style="margin-top:3rem" data-astro-cid-ovxcmftc> <span data-astro-cid-ovxcmftc>Published 15 July 2026</span> </p> </div> <aside class="article-side" data-astro-cid-ovxcmftc> <nav class="side-block side-toc" aria-label="On this page" data-astro-cid-ovxcmftc> <h2 class="side-title" data-astro-cid-ovxcmftc>On this page</h2> <ul class="toc" data-astro-cid-ovxcmftc> <li data-astro-cid-ovxcmftc> <a href="#problem" data-astro-cid-ovxcmftc>Problem</a> </li><li data-astro-cid-ovxcmftc> <a href="#approach" data-astro-cid-ovxcmftc>Approach</a> </li><li data-astro-cid-ovxcmftc> <a href="#technical-details" data-astro-cid-ovxcmftc>Technical details</a> </li><li data-astro-cid-ovxcmftc> <a href="#results" data-astro-cid-ovxcmftc>Results</a> </li><li data-astro-cid-ovxcmftc> <a href="#lessons" data-astro-cid-ovxcmftc>Lessons</a> </li> </ul> </nav>  <div class="side-block" data-astro-cid-ovxcmftc> <h2 class="side-title" data-astro-cid-ovxcmftc>Details</h2> <dl class="side-facts" data-astro-cid-ovxcmftc> <div data-astro-cid-ovxcmftc> <dt data-astro-cid-ovxcmftc>Role</dt> <dd data-astro-cid-ovxcmftc>Threat Research Intern, Seqrite Labs (Quick Heal Technologies)</dd> </div><div data-astro-cid-ovxcmftc> <dt data-astro-cid-ovxcmftc>Timeline</dt> <dd data-astro-cid-ovxcmftc>April to July 2026</dd> </div><div data-astro-cid-ovxcmftc> <dt data-astro-cid-ovxcmftc>Environment</dt> <dd data-astro-cid-ovxcmftc>Threat research internship. Public intelligence APIs and OpenCTI. No internal data is shown on this page.</dd> </div> <div data-astro-cid-ovxcmftc> <dt data-astro-cid-ovxcmftc>Tools</dt> <dd data-astro-cid-ovxcmftc> <ul class="chips" data-astro-cid-ovxcmftc> <li class="chip" data-astro-cid-ovxcmftc>Python</li><li class="chip" data-astro-cid-ovxcmftc>VirusTotal API</li><li class="chip" data-astro-cid-ovxcmftc>AbuseIPDB API</li><li class="chip" data-astro-cid-ovxcmftc>AlienVault OTX</li><li class="chip" data-astro-cid-ovxcmftc>ThreatFox</li><li class="chip" data-astro-cid-ovxcmftc>STIX 2.1</li><li class="chip" data-astro-cid-ovxcmftc>OpenCTI</li><li class="chip" data-astro-cid-ovxcmftc>MITRE ATT&amp;CK</li><li class="chip" data-astro-cid-ovxcmftc>Sigma</li> </ul> </dd> </div>   </dl> </div> </aside> </div> </div> <nav class="wrap pager" aria-label="More case studies" data-astro-cid-ovxcmftc> <a href="/projects/hardening-local-web-ui-browser-build/" data-astro-cid-ovxcmftc> <span class="eyebrow" data-astro-cid-ovxcmftc>Previous</span> <span class="pager__title" data-astro-cid-ovxcmftc>Hardening a local web UI against CSRF and DNS rebinding</span> </a>  </nav> </article> <section class="cta" aria-labelledby="cta-title"> <div class="wrap cta__inner split"> <div class="split__lead"> <h2 id="cta-title"> Hiring for a security team? I’d like to hear about it. </h2> </div> <div> <p> I&#39;m looking for a SOC analyst role first. I&#39;m also open to threat intelligence, detection engineering, incident response and security testing. Pune, anywhere in India, or remote. Rotational shifts are fine. </p> <div class="btn-row"> <a class="btn btn--primary" href="/contact/">Contact me</a> <a class="btn" href="/resume/">Resume</a> </div> </div> </div> </section>  </main> <footer class="site-footer" data-astro-cid-sz7xmlte> <div class="wrap site-footer__inner" data-astro-cid-sz7xmlte> <p class="site-footer__copy" data-astro-cid-sz7xmlte>&copy; 2026 Kushagra Patel</p> <ul class="site-footer__links" data-astro-cid-sz7xmlte> <li data-astro-cid-sz7xmlte><a href="mailto:kushagrapatel11oct@gmail.com" data-astro-cid-sz7xmlte>Email</a></li> <li data-astro-cid-sz7xmlte> <a href="https://github.com/kushagra-patel1011" rel="me noopener" data-astro-cid-sz7xmlte> GitHub </a> </li><li data-astro-cid-sz7xmlte> <a href="https://www.linkedin.com/in/kushagra-patel" rel="me noopener" data-astro-cid-sz7xmlte> LinkedIn </a> </li> </ul> </div> </footer>  </body></html>
